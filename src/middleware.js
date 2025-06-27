@@ -4,7 +4,7 @@ import { cookies } from 'next/headers'
 
 // Public routes and API routes that should be accessible without auth
 const publicRoutes = ['/login', '/sign']
-const publicAPIs = ['/api/login', '/api/sign', '/api/verify', '/api/send','/api/update-password']
+const publicAPIs = ['/api/login', '/api/sign', '/api/verify', '/api/send','/api/update-password','/api/send-otp','/api/verify-otp']
 
 export async function middleware(request) {
   const cookieStore = cookies()

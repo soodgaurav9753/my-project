@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
-
+import Head from 'next/head';
 import {
   PieChart,
   Pie,
@@ -190,7 +190,9 @@ setSavingsData(savingsArr);
   };
 
 return (
+  
 <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-950 pt-8 px-2 md:px-4 lg:px-6 text-white">
+  
 
 
     <div className="max-w-7xl mx-auto">

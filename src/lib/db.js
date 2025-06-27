@@ -1,7 +1,7 @@
 // lib/db.js
 import mongoose from 'mongoose';
 
-const MONGODB_URI ='mongodb://localhost:27017/expense';
+const MONGODB_URI =process.env.mongodb;
 
 if (!MONGODB_URI) {
   throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
