@@ -1,0 +1,39 @@
+ADMINISTRATIVE DASHBOARD — STRUCTURAL AND STYLING SPECIFICATIONS
+
+HTML Specification:
+
+The document commences with the <!DOCTYPE html> declaration, indicating HTML5 compliance. The <head> element defines metadata, including the character set (UTF-8), viewport configuration for responsive design, document title, and a reference to an external CSS resource (Experiment-3.css).
+
+The <body> contains a hidden form control — an <input type="checkbox" id="themechange"> — serving as a binary state toggle for the dark mode theme. The subsequent <div class="body"> functions as the primary grid container for the entire dashboard layout.
+
+The .body container encapsulates:
+
+<header id="head">: Comprising .header-left for the dashboard title (“Admin Dashboard”) and .header-right containing a <label> bound to the dark mode toggle.
+
+<nav id="nav">: Implemented as an unordered list (<ul>) of hyperlinked navigation elements — Home, Users, and Settings.
+
+<main id="main">: Contains two <section> elements — the first with a heading (“Welcome, Admin!”) and the second with paragraph text representing primary content.
+
+<footer id="foot">: Displays the copyright.
+
+CSS Specification:
+
+The :root pseudo-class establishes a set of CSS custom properties (--bg-header, --bg-footer, --bg-main, --bg-nav) serving as centralized color variables for theming.
+
+The universal selector (*) performs a global CSS reset by nullifying default margins and paddings, applying box-sizing: border-box, and defining a base font family.
+
+The .body grid container employs CSS Grid Layout with a fixed two-column structure (175px and 1fr) and three rows (auto 1fr auto). It maintains fixed dimensions, centralized horizontal alignment, and a defined border perimeter.
+
+The #head header utilizes var(--bg-header) for background color, spans both grid columns via grid-column: span 2, and applies white typography, padding, and increased font sizing.
+
+The #nav sidebar adopts var(--bg-nav) as its background color, a fixed column width (175px), and a vertical Flexbox layout for navigation links with inter-item spacing.
+
+The #main content section applies padding, black foreground color, and background color via var(--bg-main).
+
+The #foot footer mirrors the header’s styling, utilizing var(--bg-footer) for background color, white text, center alignment, and full-width grid spanning.
+
+.header-left and .header-right manage intra-header content alignment and size proportions for visual balance.
+
+The #themechange checkbox is visually suppressed using display: none, maintaining accessibility in the DOM.
+
+The sibling selector (#themechange:checked ~ .body) enables theme switching by dynamically overriding CSS custom properties to dark mode values, affecting the header, navigation, footer, and main content areas — achieved entirely through CSS without JavaScript intervention.
