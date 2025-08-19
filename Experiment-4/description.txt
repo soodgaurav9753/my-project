@@ -1,0 +1,107 @@
+Experiment_4
+Overview
+--------
+This project implements a real-time character counter for a textarea element in a webpage. 
+The counter updates dynamically as the user types, ensuring an accurate count of characters 
+while ignoring newline characters (\n). The application uses a clean separation of 
+HTML (structure), CSS (styling), and JavaScript (logic and interactivity).
+
+-----------------------------------------------------
+HTML (Structure)
+-----------------------------------------------------
+The HTML file provides the layout and UI elements required for the counter:
+
+1. Container (.counter-container)
+   - Wraps all elements in a bordered box with padding.
+
+2. Title (.counter-title)
+   - Displays the heading "Live Character Counter".
+
+3. Textarea (#myTextarea)
+   - The input area where users type text.
+   - Includes a placeholder "Start typing...".
+
+4. Character Count Display (#charCount)
+   - A span element that dynamically updates with the character count.
+
+Minimal role: HTML just defines the visual elements without handling logic.
+
+-----------------------------------------------------
+CSS (Styling)
+-----------------------------------------------------
+The CSS file (style.css) ensures the page looks neat and user-friendly:
+
+- Container Styling
+  - Adds a border, padding, margin, and max-width.
+  - Background color set to white for clarity.
+
+- Title Styling
+  - Increases font size for emphasis.
+  - Adds bottom margin for spacing.
+
+- Textarea Styling
+  - Expands width to 100% of container.
+  - Sets a minimum height and readable font size.
+
+- Character Count Styling (.char-count)
+  - Makes the number bold for easy visibility.
+
+Minimal role: CSS is light, focusing on readability and clean design.
+
+-----------------------------------------------------
+JavaScript (Logic & Interactivity)
+-----------------------------------------------------
+The core functionality lies in the JavaScript (script.js):
+
+1. Event Listener for DOM Load
+   window.addEventListener('DOMContentLoaded', function() { ... });
+   - Ensures the script runs after the HTML is fully loaded.
+   - Prevents null references by waiting for #myTextarea and #charCount to exist.
+
+2. Variable Initialization
+   var textarea = document.getElementById('myTextarea');
+   var charCount = document.getElementById('charCount');
+   - textarea → Refers to the user input area.
+   - charCount → Refers to the span that displays the count.
+
+3. Input Handler Function
+   const handler = function() {
+       var value = textarea.value;
+       var newlineCount = (value.match(/\n/g) || []).length;
+       charCount.textContent = value.length - newlineCount;
+   }
+
+   Step-by-step logic:
+   - Retrieve Input Value (textarea.value).
+   - Count Newlines using regex.
+   - Compute Character Count by subtracting newline count.
+   - Update UI dynamically by modifying textContent.
+
+4. Input Event Binding
+   textarea.addEventListener('input', handler);
+   - Triggers handler whenever the user types, deletes, or pastes text.
+   - Provides instant updates without needing a button.
+
+-----------------------------------------------------
+Key JavaScript Features Highlighted
+-----------------------------------------------------
+- DOM Manipulation: Selecting and updating elements (getElementById, .textContent).
+- Event Handling: Using input events for real-time updates.
+- Regex Usage: Identifying newline characters (/\n/g).
+- Defensive Coding: (value.match(/\n/g) || []) ensures no runtime errors.
+- Functional Separation: Logic encapsulated inside handler function.
+
+-----------------------------------------------------
+Real-World Applications
+-----------------------------------------------------
+- Word & character counters in text editors (MS Word, Google Docs).
+- Form validations with character limits (Twitter, SMS).
+- Code editors that need to count characters without newline padding.
+
+-----------------------------------------------------
+Summary
+-----------------------------------------------------
+- HTML → Provides input and display elements.
+- CSS → Styles the layout cleanly.
+- JavaScript → Implements the entire counting logic, 
+  handles user interaction, and updates the UI dynamically.
