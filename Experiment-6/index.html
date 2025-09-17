@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Interactive SVG Drawing Tool</title>
+  <title>Interactive Canvas Drawing Tool</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
     <h1 class="title">SVG Drawing Tool</h1>
 
-    <svg id="drawingArea" width="800" height="500" aria-label="SVG drawing canvas" role="img"></svg>
+    <!-- Using canvas instead of svg -->
+    <canvas id="drawingArea" width="800" height="500" aria-label="Canvas drawing area" role="img"></canvas>
   </div>
 
   <script src="app.js"></script>

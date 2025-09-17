@@ -1,45 +1,43 @@
-const svg = document.getElementById("drawingArea");
+const canvas = document.getElementById("drawingArea");
+const ctx = canvas.getContext("2d");
 
 let isDrawing = false;
-let currentPath = null;
 
 function getMousePosition(evt) {
-  const rect = svg.getBoundingClientRect();
+  const rect = canvas.getBoundingClientRect();
   return {
     x: evt.clientX - rect.left,
     y: evt.clientY - rect.top
   };
 }
 
-svg.addEventListener("mousedown", (e) => {
+canvas.addEventListener("mousedown", (e) => {
   isDrawing = true;
-
   const { x, y } = getMousePosition(e);
-  currentPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
-  currentPath.setAttribute("stroke", "#1e88e5");
-  currentPath.setAttribute("stroke-width", "3");
-  currentPath.setAttribute("stroke-linecap", "round");
-  currentPath.setAttribute("stroke-linejoin", "round");
-  currentPath.setAttribute("fill", "none");
+  ctx.beginPath();
+  ctx.moveTo(x, y);
 
-  currentPath.setAttribute("d", `M ${x} ${y}`);
-  svg.appendChild(currentPath);
+  ctx.strokeStyle = "#1e88e5";
+  ctx.lineWidth = 3;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
 });
 
-svg.addEventListener("mousemove", (e) => {
-  if (!isDrawing || !currentPath) return;
+canvas.addEventListener("mousemove", (e) => {
+  if (!isDrawing) return;
 
   const { x, y } = getMousePosition(e);
-  const d = currentPath.getAttribute("d");
-  currentPath.setAttribute("d", `${d} L ${x} ${y}`);
+  ctx.lineTo(x, y);
+  ctx.stroke();
 });
 
 function stopDrawing() {
+  if (!isDrawing) return;
   isDrawing = false;
-  currentPath = null;
+  ctx.closePath();
 }
 
-svg.addEventListener("mouseup", stopDrawing);
-svg.addEventListener("mouseleave", stopDrawing);
+canvas.addEventListener("mouseup", stopDrawing);
+canvas.addEventListener("mouseleave", stopDrawing);
 document.addEventListener("mouseup", stopDrawing);
