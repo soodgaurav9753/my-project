@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 💸 Expense Tracker Web App
 
-## Getting Started
+A beautifully designed and powerful Expense Tracker built with **Next.js**, featuring:
+- Dashboard with graphs
+- OTP-based login/signup
+- CSV export
+- Expense/income categorization
+- Forgot password via email
+- And more…
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📦 How to Setup (Step-by-Step Guide)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### ✅ Step 1: Download & Extract
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Download the `.zip` file provided.
+2. Extract the contents.
+3. Open the extracted folder in your code editor.  
+   👉 **VS Code is recommended for beginners**.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+### ⚙️ Step 2: Configure Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+This app requires your own configuration to function properly. In the root folder, you'll find a file named:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+.env.example
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+javascript
+Copy
+Edit
 
-## Deploy on Vercel
+➡️ Rename `.env.example` to `.env`  
+➡️ Open the `.env` file and **replace the placeholder values** as shown below:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```env
+MAIL_USER=your_email@gmail.com
+MAIL_PASS=your_gmail_app_password
+JWT_SECRET=your_random_secret_key
+MONGODB=mongodb+srv://your_mongodb_connection_string
+🔐 How to Get These Values:
+📧 1. MAIL_USER and MAIL_PASS for Nodemailer (Gmail):
+Use a Gmail account for sending OTP emails.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Go to: https://myaccount.google.com/apppasswords
+
+Generate an App Password (16 characters) for "Mail" and "Other".
+
+Use your Gmail ID as MAIL_USER, and generated password as MAIL_PASS.
+
+🛡️ 2. JWT_SECRET:
+Any random long string (e.g., use https://generate-random.org)
+
+Example: JWT_SECRET=Jhsu2@hds78_jH8d9_sksk!
+
+🗄️ 3. MONGODB:
+Get your connection string from MongoDB Atlas
+
+Example:
+mongodb+srv://username:password@cluster.mongodb.net/database_name?retryWrites=true&w=majority
+
+▶️ Step 3: Run the App Locally
+After setting up .env file:
+
+bash
+Copy
+Edit
+npm install       # Install dependencies
+npm run dev       # Start development server at http://localhost:3000
+🏗️ Step 4: Build for Production
+To build the project for deployment:
+
+bash
+Copy
+Edit
+npm run build     # Builds the app
+To preview production build locally:
+
+bash
+Copy
+Edit
+npm start
+🚀 How to Deploy (Free Hosting Options)
+📌 Option 1: Vercel (Recommended)
+Go to https://vercel.com
+
+Import your GitHub repository or upload the project
+
+In "Environment Variables" section, add:
+
+MAIL_USER
+
+MAIL_PASS
+
+JWT_SECRET
+
+MONGODB
+
+Click Deploy — done ✅
+
+📌 Option 2: Render
+Go to https://render.com
+
+Create a new Web Service
+
+Add your environment variables
+
+Deploy your app in seconds
+
+🛡️ Disclaimer
+This is a self-hosted project. You must provide your own credentials for Gmail and MongoDB.
+The developer is not responsible for any misuse, data breach, or security issue resulting from incorrect configuration.
+DO NOT share your .env file publicly.
+
+🙌 Support
+For any setup issues or feedback, feel free to contact the developer.
